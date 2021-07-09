@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<!-- Read me 
+
+This app is build as a learning tool for me, please report any bugs or quirks. feel free to clone -->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge, no-cache">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta Cache-Control="no-cache"> -->
+    <title>Price Matrix</title>
+
+    <style type="text/css" media="screen">
+                /* basic style of website */
+                    :root{
+                        /* height: 100vh;  */
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        background-color: #FDFEFF;
+                        /* 787878 */
+                        text-align:center;
+                        font-size: 3vh;
+                        /* zoom: 145%; */
+                        /* transform: scale(1.2); */
+                        font-family: 'Roboto', sans-serif;
+                    }
+                    
+                    #main{
+                        font-size: 300%;
+                        margin: 1%;
+                    }
+                    h1{
+                        color:#cc0000
+                    }
+                    h2{
+                        color:#343434
+                    }
+                    form{
+                        margin:2vh;
+                        padding:auto;
+                    }
+
+                    input[type="button"]{
+                        width: 20vh;
+                        height: auto;
+                        margin: 1vh;
+                    }
+
+                    #plat_bt{
+                        background-color: #D3D6D8;
+                    }
+
+                    #gold_bt{
+                        background-color: #ffd700;
+                    }
+                    #silver_bt{
+                        background-color: #EAEBEC;
+                    }
+                    
+                    #toltal_bt{
+                        background-color: #cc0000;
+                        color:#fff;
+                    }
+
+                    select{
+                        margin:1vh;
+                        padding:auto;
+                    }
+                    
+                    footer{
+                        font-size: 1.5vh;
+                    }
+        </style>
+</head>
+<body>
+    <h1 id="main">Total support</h1>
+    
+
+    <h2>Total support for new devices</h2>
+    
+    <script>
+        // current tax in state
+        const tax = 0.07;
+        
+        // function the sets platinum package
+        function setP(){
+            document.getElementById("proct").value='299';
+            document.getElementById("virus").value='229';
+            document.getElementById("setup").value='99';
+
+        }
+        // function the sets gold package
+        function setG(){
+            document.getElementById("proct").value='199';
+            document.getElementById("virus").value='159';
+            document.getElementById("setup").value='99';
+
+        }
+        // function the sets silver package
+        function setS(){
+            document.getElementById("proct").value='99';
+            document.getElementById("virus").value='99';
+            document.getElementById("setup").value='99';
+        }
+
+        //main calculation function
+        function toTal(){
+            const planc= parseFloat(document.getElementById("proct").value)+
+                         parseFloat(document.getElementById("virus").value)+
+                         parseFloat(document.getElementById("setup").value)+
+                         parseFloat(document.getElementById("cost").value);
+
+            const cupen=parseFloat(document.getElementById("coupon").value);             
+
+            const tax_on = parseFloat(planc*tax);
+
+            const total_tax = parseFloat(planc+tax_on);
+
+            const total_coupon = parseFloat(total_tax*cupen)
+
+            const final_total = parseFloat(total_tax-total_coupon)
+
+
+            alert("Your total today is: "+final_total.toFixed(2));
+        }
+    </script>
+    <input class="bt"type="button"id="plat_bt"value="Platinum"onClick="setP()">
+    <input class="bt"type="button" id="gold_bt"value="Gold"onClick="setG()">
+    <input class="bt"type="button" id="silver_bt"value="Silver"onClick="setS()">
+
+    
+    <form action="">
+        <div>Hardware Protection:</div>
+        <select name="Protection" id="proct" title="hardware proctection">
+            <!--  -->
+            <option value="0">None</option>
+            <option value="99">Breakdown+tech Help 2yr</option>
+            <option value="199">Accidental+tech Help 2yr</option>
+            <option value="299">Accidental+tech Help 4yr</option>
+            <!--  -->
+        </select>
+        <div>Software Protection:</div>        
+        <select name="Antivirus" id="virus" title="antivirus">
+            <!--  -->
+            <option value="0">None</option>
+            <option value="99">virus shield</option>
+            <option value="159">virus shield+vpn 1yr</option>
+            <option value="229">virus shield+vpn 2yr</option>
+            <!--  -->
+        </select>
+        <div>Device setup:</div>        
+        <select name="SETUP" id="setup" title="setup">
+            <!--  -->
+            <option value="0">None</option>
+            <option value="99">Premier setup</option>
+            <!--  -->
+        </select>
+    </form>
+    <input id="cost" type="number" name="" placeholder="cost of pc">
+    
+    <select name="Percentage" id="coupon" title="coupon">
+        <!--  -->
+        <option value="0">% off</option>
+        <option value="0.20">20% off</option>
+        <option value="0.25">25% off</option>
+        <!--  -->
+    </select>
+    
+    <input type="button" id="toltal_bt"value="Total" onClick="toTal()">
+  </label>
+ 
+  <br>
+  <br>
+  <!-- <div>Your total here!</div> -->
+          <footer>Made by WMC © 2021</footer>     
+</body>
+</html>
